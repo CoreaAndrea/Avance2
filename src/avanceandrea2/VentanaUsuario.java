@@ -4,6 +4,9 @@
  */
 package avanceandrea2;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -116,6 +119,11 @@ public class VentanaUsuario extends javax.swing.JFrame {
         });
 
         jButton2.setText("Salir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -210,11 +218,24 @@ public class VentanaUsuario extends javax.swing.JFrame {
           
        } else {
            Usuario nuevoUsuario = new Usuario(nombre, apellidos, usuario, contraseña);
-           usuarios.add(nuevoUsuario); // añadir usuario
+           usuarios.add(nuevoUsuario);
            
-        //recordar guardar en archivo
+         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("Clientes.usuario"))) {
+            out.writeObject(usuarios);
+            JOptionPane.showMessageDialog(this,"Usuario guardado correctamente.");
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this,"Error al guardar el usuario: " + e.getMessage());
+         }
        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose(); // cierra la ventana
+        VentanaInicio ventanaInicio = new VentanaInicio(); 
+        ventanaInicio.setVisible(true); // abre la ventana
+        
+        // configurar la ventana inicio!
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
