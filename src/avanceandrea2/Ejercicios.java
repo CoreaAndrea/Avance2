@@ -3,7 +3,7 @@ package avanceandrea2;
 
 import javax.swing.JOptionPane;
 
-public class  Ejercicios {
+public abstract class  Ejercicios {
     protected String nombre_ejercicio;
     protected String descripcion;
     protected String repeticiones; 

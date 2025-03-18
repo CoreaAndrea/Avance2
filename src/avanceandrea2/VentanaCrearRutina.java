@@ -4,18 +4,40 @@
  */
 package avanceandrea2;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Colegio
  */
 public class VentanaCrearRutina extends javax.swing.JFrame {
+    private Crear_Rutina rutina;
+    private ArrayList<Instructor> i_Seleccionado = new ArrayList<>();
+    private int contador = 3;
 
     /**
      * Creates new form VentanaCrearRutina
      */
     public VentanaCrearRutina() {
         initComponents();
+        rutina = new Crear_Rutina(); 
     }
+    private void agregarInstructor(Instructor instructor) {
+        i_Seleccionado.add(instructor);
+        JOptionPane.showMessageDialog(null, "Instructor agregado: " + instructor.getInstructor());
+}
+    private void mostrar() {
+    if (i_Seleccionado.size() == 0) {
+        JOptionPane.showMessageDialog(null, "No ha seleccionado ningún instructor.");
+    } else {
+        String seleccionados = "Instructores para sus entrenamientos:\n";
+        for (Instructor in : i_Seleccionado) {
+            seleccionados += "Instructor: " + in.getInstructor() + " - Día: " + in.getDia() + " - Hora: " + in.getHora() + "\n";
+        }
+        JOptionPane.showMessageDialog(null, seleccionados);
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -88,16 +110,41 @@ public class VentanaCrearRutina extends javax.swing.JFrame {
         );
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sentadillas", "Zancadas", "Dominadas", "Peso muerto", "Crunches con cable", "Fondos en paralelas", "Remo con barra", "Trotar", "Subir escaleras", "Burpees", "Saltos de cuerda", "Flexiones", "Planchas", "Extensiones de tríceps", "Elevaciones laterales" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Andres Lopez ", "Mariana Martinez", "Alexander Molina", "Gorge Mora" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Escriba un nombre para su rutina");
 
         jButton1.setText("Ver Rutina");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Ver Intructor(s)");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Volver");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,6 +216,54 @@ public class VentanaCrearRutina extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        String ejercicioSeleccionado = (String) jComboBox1.getSelectedItem(); 
+        if (ejercicioSeleccionado != null) {
+            rutina.agregarEjercicioARutina(ejercicioSeleccionado);
+            JOptionPane.showMessageDialog(this, ejercicioSeleccionado + " agregado a tu rutina.");
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        String seleccion = (String) jComboBox2.getSelectedItem();
+        if (i_Seleccionado.size() < contador) {
+            switch (seleccion) {
+                case "Andres Lopez":
+                agregarInstructor(new Instructor("Andres Lopez", "Martes", "6:00 am a 8:00 am"));
+                break;
+            case "Mariana Martinez":
+                agregarInstructor(new Instructor("Mariana Martinez", "Jueves", "8:00 am a 10:00 am"));
+                break;
+            case "Alexander Molina":
+                agregarInstructor(new Instructor("Alexander Molina", "Viernes", "2:00 am a 4:00 am"));
+                break;
+            case "Gorge Mora":
+                agregarInstructor(new Instructor("Gorge Mora", "Lunes", "4:00 pm a 6:00 pm"));
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Selecciona un instructor válido.");
+                break;
+            }
+            
+        } else {
+                JOptionPane.showMessageDialog(null, "Ya ha seleccionado el máximo de instructores.");
+        }
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        mostrar();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        VentanaMenu ventanaMenu = new VentanaMenu();
+        ventanaMenu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       rutina.mostrarRutina();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

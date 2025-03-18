@@ -4,8 +4,15 @@ package avanceandrea2;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public abstract class Crear_Rutina extends Ejercicios  {
+public  class Crear_Rutina extends Ejercicios  {
     private ArrayList<String> rutinaPersonalizada;
+
+    public Crear_Rutina(String nombre_ejercicio, String descripcion, String repeticiones, String duracion) {
+        super(nombre_ejercicio, descripcion, repeticiones, duracion);
+        rutinaPersonalizada = new ArrayList<>(); 
+    }
+    
+    
 
     public Crear_Rutina(ArrayList<String> rutinaPersonalizada) {
         this.rutinaPersonalizada = rutinaPersonalizada;
@@ -20,7 +27,9 @@ public abstract class Crear_Rutina extends Ejercicios  {
     }
 
     public Crear_Rutina() {
+        rutinaPersonalizada = new ArrayList<>(); 
     }
+    
     public void verEjercicios1() {
         boolean continuar = true;
         while (continuar) {

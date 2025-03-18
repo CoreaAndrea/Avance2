@@ -18,7 +18,7 @@ public class Usuario  implements Serializable {
     private String usuario;
     private static ArrayList<Usuario> usuarios = new ArrayList<>();
 
-    public Usuario(String nombre, String apellido, String contrasena, String usuario) {
+    public Usuario(String nombre, String apellido, String usuario, String contrasena) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.contrasena = contrasena;

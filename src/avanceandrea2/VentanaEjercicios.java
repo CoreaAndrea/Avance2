@@ -4,6 +4,8 @@
  */
 package avanceandrea2;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Colegio
@@ -86,12 +88,32 @@ public class VentanaEjercicios extends javax.swing.JFrame {
         );
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Flexiones", "Planchas", "Extensiones de triceps", "Elevaciones laterales de hombros" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sentadillas", "Zancadas", "Dominadas", "Peso Muerto", "Crunches con cable", "Fondos en paralelas", "Remo en barra" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trotar", "Subir Escaleras", "Burpees", "Saltos de cuerda" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trotar", "Subir escaleras", "Burpees", "Saltos de cuerda" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Volver al menu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -142,6 +164,169 @@ public class VentanaEjercicios extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        String ejercicioSeleccionado = (String) jComboBox1.getSelectedItem();
+        String nombreEjercicio = "", descripcion = "", repeticiones = "", duracion = "";
+        
+        switch (ejercicioSeleccionado) {
+        case "Flexiones":
+            nombreEjercicio = "Flexiones";
+            descripcion = "Las flexiones son un ejercicio de fuerza que trabaja principalmente el pecho, "
+                        + "los hombros y los tríceps.";
+            repeticiones = "3 series de 10-15 repeticiones.";
+            duracion = "De 5 a 10 minutos por serie.";
+            break;
+
+        case "Planchas":
+            nombreEjercicio = "Planchas";
+            descripcion = "La plancha es un ejercicio de isometría que trabaja todo el core, "
+                        + "incluyendo abdominales y espalda baja.";
+            repeticiones = "Mantener 30-60 segundos por serie, 3-4 series.";
+            duracion = "De 2 a 4 minutos por sesión.";
+            break;
+
+        case "Extensiones de triceps":
+            nombreEjercicio = "Extensiones de tríceps";
+            descripcion = "Las extensiones de tríceps son un ejercicio para trabajar la parte "
+                        + "posterior de los brazos.";
+            repeticiones = "3 series de 10-12 repeticiones.";
+            duracion = "De 3 a 5 minutos por serie.";
+            break;
+
+        case "Elevaciones laterales de hombros":
+            nombreEjercicio = "Elevaciones laterales de hombros";
+            descripcion = "Las elevaciones laterales son un ejercicio de aislamiento para trabajar los hombros.";
+            repeticiones = "3 series de 10-15 repeticiones.";
+            duracion = "De 3 a 6 minutos por serie.";
+            break;
+
+        default:
+            JOptionPane.showMessageDialog(this, "Selección inválida.");
+            return;
+    }
+
+    String informacion = "Nombre del Ejercicio: " + nombreEjercicio + "\n"
+                       + "Descripción: " + descripcion + "\n"
+                       + "Número de Repeticiones: " + repeticiones + "\n"
+                       + "Duración: " + duracion;
+
+    JOptionPane.showMessageDialog(this, informacion);
+
+                                            
+
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        String ejercicioSeleccionado = (String) jComboBox2.getSelectedItem();
+        String nombreEjercicio = "", descripcion = "", repeticiones = "", duracion = "";
+        
+        switch (ejercicioSeleccionado) {
+            case "Sentadillas":
+                nombreEjercicio = "Sentadillas";
+                descripcion = "Es un ejercicio que consiste en flexionar las rodillas y bajar el cuerpo hasta quedar en cuclillas.";
+                repeticiones = "3 series de 6 a 10 repeticiones, dos veces por semana.";
+                duracion = "4 a 10 minutos a la semana.";
+                break;
+            case "Zancadas":
+                nombreEjercicio = "Zancadas";
+                descripcion = "La zancada es un ejercicio de fitness para trabajar los músculos de muslos y glúteos.";
+                repeticiones = "3 series de 10-12 repeticiones por pierna.";
+                duracion = "Entre 5 y 15 segundos por serie.";
+                break;
+            case "Dominadas":
+                nombreEjercicio = "Dominadas";
+                descripcion = "Consiste en levantar el cuerpo mientras se está colgado de una barra.";
+                repeticiones = "1 a 3 series de 8 a 12 repeticiones.";
+                duracion = "2 a 6 minutos aproximadamente por serie.";
+                break;
+            case "Peso Muerto":
+                nombreEjercicio = "Peso Muerto";
+                descripcion = "Es un ejercicio de fuerza que consiste en levantar una barra desde el suelo hasta la cintura.";
+                repeticiones = "Entre 6 y 12 repeticiones.";
+                duracion = "8 a 16 minutos aproximadamente por serie.";
+                break;
+            case "Crunches con cable":
+                nombreEjercicio = "Crunches con cable";
+                descripcion = "Los crunches con cable son un ejercicio abdominal realizado con una máquina de polea o cable.";
+                repeticiones = "2 o 3 series de 10 a 20 repeticiones.";
+                duracion = "2 a 7 minutos por serie.";
+                break;
+            case "Fondos en paralelas":
+                nombreEjercicio = "Fondos en paralelas";
+                descripcion = "Ejercicio de fuerza utilizando el peso corporal, ideal para trabajar el pecho y los tríceps.";
+                repeticiones = "2 o 3 series de 8 a 12 repeticiones.";
+                duracion = "4 a 15 minutos por serie.";
+                break;
+            case "Remo en barra":
+                nombreEjercicio = "Remo en barra";
+                descripcion = "Ejercicio de fuerza realizado con una barra que ayuda a desarrollar la espalda, los hombros y los brazos.";
+                repeticiones = "8 a 10 repeticiones.";
+                duracion = "2.5 a 5 minutos.";
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "Selección inválida.");
+        }
+        String informacion = "Nombre del Ejercicio: " + nombreEjercicio + "\n"
+                           + "Descripcion: " + descripcion + "\n"
+                           + "Numero de Repeticiones: " + repeticiones + "\n"
+                           + "Duracion: " + duracion + "\n";
+        JOptionPane.showMessageDialog(this, informacion);
+    
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        String ejercicioSeleccionado = (String) jComboBox3.getSelectedItem();
+        String nombreEjercicio = "", descripcion = "", repeticiones = "", duracion = "";
+        
+        
+        switch (ejercicioSeleccionado) {
+        case "Trotar":
+            nombreEjercicio = "Trotar";
+            descripcion = "Trotar es un ejercicio cardiovascular ideal para mejorar la resistencia y quemar calorías.";
+            repeticiones = "30 minutos a un ritmo moderado, 3-4 veces por semana.";
+            duracion = "De 20 a 40 minutos por sesión.";
+            break;
+
+        case "Subir escaleras":
+            nombreEjercicio = "Subir escaleras";
+            descripcion = "Subir escaleras trabaja las piernas, los glúteos y mejora la resistencia.";
+            repeticiones = "3 series de 10-15 minutos, 2-3 veces por semana.";
+            duracion = "De 15 a 20 minutos por serie.";
+            break;
+
+        case "Burpees":
+            nombreEjercicio = "Burpees";
+            descripcion = "Los burpees son un ejercicio completo de cuerpo que mejora la fuerza y resistencia.";
+            repeticiones = "3 series de 10-15 repeticiones.";
+            duracion = "2-3 minutos por serie.";
+            break;
+
+        case "Saltos de cuerda":
+            nombreEjercicio = "Saltos de cuerda";
+            descripcion = "El salto de cuerda es un ejercicio cardiovascular excelente para mejorar el ritmo y la agilidad.";
+            repeticiones = "3 series de 2-3 minutos.";
+            duracion = "De 5 a 10 minutos por sesión.";
+            break;
+
+        default:
+            JOptionPane.showMessageDialog(this, "Selección inválida.");
+            return;
+    }
+
+    String informacion = "Nombre del Ejercicio: " + nombreEjercicio + "\n"
+                       + "Descripción: " + descripcion + "\n"
+                       + "Número de Repeticiones: " + repeticiones + "\n"
+                       + "Duración: " + duracion;
+
+    JOptionPane.showMessageDialog(this, informacion);
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        VentanaMenu ventanaMenu = new VentanaMenu();
+        ventanaMenu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
