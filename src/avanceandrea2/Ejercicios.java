@@ -1,9 +1,10 @@
 
 package avanceandrea2;
 
+import java.io.Serializable;
 import javax.swing.JOptionPane;
 
-public abstract class  Ejercicios {
+public abstract class  Ejercicios implements Serializable {
     protected String nombre_ejercicio;
     protected String descripcion;
     protected String repeticiones; 

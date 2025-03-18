@@ -1,10 +1,11 @@
 
 package avanceandrea2;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public  class Crear_Rutina extends Ejercicios  {
+public  class Crear_Rutina extends Ejercicios implements Serializable {
     private ArrayList<String> rutinaPersonalizada;
 
     public Crear_Rutina(String nombre_ejercicio, String descripcion, String repeticiones, String duracion) {

@@ -1,10 +1,11 @@
 
 package avanceandrea2;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public class Instructor {
+public class Instructor implements Serializable {
     private String instructor;
     private String dia;
     private String hora;
